@@ -470,3 +470,20 @@ if (newsletterForm) {
 }
 
 /* ==================== END FOOTER JAVASCRIPT ==================== */
+
+/* =================================
+   WHY CHOOSE EDUSPHERE INTERACTION
+================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const featureCards = document.querySelectorAll(".feature-card");
+
+    featureCards.forEach((card, index) => {
+
+        // Initial animation delay
+        card.style.transitionDelay = `${index * 80}ms`;
+
+    });
+
+});
