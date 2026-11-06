@@ -1,4 +1,59 @@
 
+/* =========================================
+   EDUSPHERE FAQ ACCORDION
+========================================= */
+
+const faqList = document.querySelector(".faq-list");
+
+if (faqList) {
+
+    faqList.addEventListener("click", function (event) {
+
+        const question = event.target.closest(".faq-question");
+
+        // Ignore clicks outside FAQ buttons
+        if (!question || !faqList.contains(question)) {
+            return;
+        }
+
+        const currentItem = question.closest(".faq-item");
+
+        const isAlreadyOpen = currentItem.classList.contains("active");
+
+        // Close all FAQ items
+        const allFaqItems = faqList.querySelectorAll(".faq-item");
+
+        allFaqItems.forEach(function (item) {
+
+            item.classList.remove("active");
+
+            const button = item.querySelector(".faq-question");
+            const icon = item.querySelector(".faq-toggle");
+
+            button.setAttribute("aria-expanded", "false");
+            icon.textContent = "+";
+
+        });
+
+
+        // Open the clicked item if it was previously closed
+        if (!isAlreadyOpen) {
+
+            currentItem.classList.add("active");
+
+            question.setAttribute("aria-expanded", "true");
+
+            const currentIcon = currentItem.querySelector(".faq-toggle");
+
+            currentIcon.textContent = "−";
+
+        }
+
+    });
+
+}
+
+
 // ================================
 // 1. DARK MODE FUNCTIONALITY
 // ================================
@@ -470,4 +525,3 @@ if (newsletterForm) {
 }
 
 /* ==================== END FOOTER JAVASCRIPT ==================== */
-
